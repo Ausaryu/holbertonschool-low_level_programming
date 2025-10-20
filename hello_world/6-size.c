@@ -11,7 +11,8 @@ int main(void)
 	int intType = '1';
 	long int longintType = '1';
 	long long longlongintType = '1';
-	float floatType = '1' ;
+	float floatType = '1';
+
 	printf("Size of a char: %ld byte(s)\n",
 		sizeof(charType));
 	printf("Size of an int: %ld byte(s)\n",
