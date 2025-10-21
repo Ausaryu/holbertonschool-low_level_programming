@@ -9,7 +9,7 @@ int main(void)
 {
 	int x;
 
-	for (x = '1'; x <= 'f'; x++)
+	for (x = '0'; x <= 'f'; x++)
 	{
 		if (x > '9' && x < 'a')
 		{
