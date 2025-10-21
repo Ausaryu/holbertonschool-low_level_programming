@@ -2,11 +2,11 @@
 #include "main.h"
 
 /**
- *main - ouais
+ *print_alphabet_x10 - ouais
  *
  *Return: l'alphabet frèe
  */
-int main(void)
+int print_alphabet_x10(void)
 {
 	int x;
 	int y;
