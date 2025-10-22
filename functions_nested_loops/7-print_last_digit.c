@@ -10,7 +10,7 @@ int print_last_digit(int i)
 {
 	long int x;
 	long int y;
-	
+
 	y = (long int)i;
 	if (i < 0)
 	{
