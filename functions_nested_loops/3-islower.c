@@ -3,14 +3,14 @@
 
 /**
  *_islower - ouais
- *
+ *@c: the character to check
  *Return: soit 1 ou 0
  */
 int _islower(int c)
 {
 	int x;
 
-for (x = 'a'; x <= 'z'; x++)
+	for (x = 'a'; x <= 'z'; x++)
 	{
 		if (x == c)
 		{
