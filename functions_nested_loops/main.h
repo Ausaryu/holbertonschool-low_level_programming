@@ -18,3 +18,10 @@ void print_alphabet(void);
 int print_alphabet_x10();
 
 #endif
+
+#ifndef _ISLOWER
+#define _ISLOWER
+
+int _islower(int c);
+
+#endif
