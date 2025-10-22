@@ -1,48 +1,13 @@
-#ifndef _PUTCHAR
-#define _PUTCHAR
+#ifndef MAIN_H
+#define MAIN_H
 
 int _putchar(char c);
-
-#endif
-
-#ifndef PRINT_ALPHABET
-#define PRINT_ALPHABET
-
 void print_alphabet(void);
-
-#endif
-
-#ifndef PRINT_ALPHABET_X10
-#define PRINT_ALPHABET_X10
-
-int print_alphabet_x10();
-
-#endif
-
-#ifndef _ISLOWER
-#define _ISLOWER
-
+void print_alphabet_x10(void);
 int _islower(int c);
-
-#endif
-
-#ifndef _ISALPHA
-#define _ISALPHA
-
 int _isalpha(int c);
-
-#endif
-
-#ifndef _ABS
-#define _ABS
-
-int _abs(int);
-
-#endif
-
-#ifndef PRINT_SIGN
-#define PRINT_SIGN
-
+int _abs(int n);
 int print_sign(int n);
+int print_last_digit(int);
 
 #endif
