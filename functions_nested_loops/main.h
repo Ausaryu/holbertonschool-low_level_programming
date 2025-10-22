@@ -25,3 +25,10 @@ int print_alphabet_x10();
 int _islower(int c);
 
 #endif
+
+#ifndef _ISALPHA
+#define _ISALPHA
+
+int _isalpha(int c);
+
+#endif
