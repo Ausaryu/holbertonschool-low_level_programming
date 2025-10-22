@@ -8,8 +8,8 @@
  */
 int print_last_digit(int i)
 {
-	int x;
-	int y;
+	long int x;
+	long int y;
 
 	if (i < 0)
 	{
