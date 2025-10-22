@@ -39,3 +39,10 @@ int _isalpha(int c);
 int _abs(int);
 
 #endif
+
+#ifndef PRINT_SIGN
+#define PRINT_SIGN
+
+int print_sign(int n);
+
+#endif
