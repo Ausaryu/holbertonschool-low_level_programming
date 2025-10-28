@@ -18,6 +18,8 @@ void puts_half(char *str)
 		x++;
 	}
 
+	str = str + ((count + 1) / 2);
+
 	while (*str != '\0')
 	{
 		write(1, str, 1);
