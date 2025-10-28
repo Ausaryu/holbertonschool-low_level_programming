@@ -10,11 +10,14 @@
 void puts2(char *str)
 {
 	char *x = str;
+	int count = 0;
 
-	while (*x != '.' && *x != '\0')
+	while (*x != '\0')
 	{
-		write(1, x, 1);
-		x += 2;
+		if (count % 2 == 0)
+			write(1, x, 1);
+		x++;
+		count++;
 	}
 	write(1, "\n", 1);
 }
