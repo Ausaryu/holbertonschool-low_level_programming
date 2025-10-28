@@ -11,7 +11,7 @@ void puts2(char *str)
 {
 	char *x = str;
 
-	while (*x != '\0')
+	while (*x != '.')
 	{
 		write(1, x, 1);
 		x += 2;
