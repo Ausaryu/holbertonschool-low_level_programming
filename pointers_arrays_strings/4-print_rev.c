@@ -18,11 +18,11 @@ void print_rev(char *str)
 		x++;
 	}
 
-	while (count >= 0)
+	while (count != 0)
 	{
+		x--;
 		write(1, x, 1);
 		count--;
-		x--;
 	}
 	write(1, "\n", 1);
 }
