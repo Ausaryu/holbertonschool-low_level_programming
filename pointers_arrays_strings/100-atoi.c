@@ -3,7 +3,7 @@
 
 /**
  * _atoi - convert string to int
- * @s: 
+ * @s: the string to convert
  * Return: int
  */
 int _atoi(char *s)
@@ -30,5 +30,5 @@ int _atoi(char *s)
 		result = result * 10 + (*p - '0');
 		p++;
 	}
-	return (int)(sign * result);
+	return ((int)(sign * result));
 }
