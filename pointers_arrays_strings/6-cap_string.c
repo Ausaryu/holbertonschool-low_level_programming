@@ -2,16 +2,15 @@
 #include <stdio.h>
 
 /**
- * string_toupper - changes all lowercase letters
- *of a string to uppercase
- * @n: the string to convert
+ * cap_string - capitalize all word in a string
+ * @n: the string to capitalize
  *
  * Return: the string fixed.
  */
 char *cap_string(char *n)
 {
 	int i = 0;
-	int do_maj = 0;
+	int do_maj = 1;
 
 	while (n[i] != '\0')
 	{
@@ -30,7 +29,7 @@ char *cap_string(char *n)
 			{
 				do_maj = 1;
 			}
-			else 
+			else
 			{
 				do_maj = 0;
 			}
