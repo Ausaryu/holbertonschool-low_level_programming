@@ -2,7 +2,7 @@
 #include <unistd.h>
 
 /**
- * _strncpy - compare the ascii value of two strings
+ * _strcmp - compare the ascii value of two strings
  * @s1: string 1 to compare
  * @s2: string 2 to compare
  * Return: int
