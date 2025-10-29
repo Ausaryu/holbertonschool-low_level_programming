@@ -10,7 +10,7 @@ int _atoi(char *s)
 {
 	char *p = s;
 	int sign = 1;
-	long result = 0;
+	unsigned int result = 0;
 
 	while (*p < '0' || *p > '9')
 	{
@@ -30,5 +30,7 @@ int _atoi(char *s)
 		result = result * 10 + (*p - '0');
 		p++;
 	}
-	return ((int)(sign * result));
+	if (sign == -1)
+		return (-result);
+	return (result);
 }
