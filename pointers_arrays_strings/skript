@@ -1,0 +1,5 @@
+echo "📝 Ajout de la fonction push dans ~/.zshrc..."
+echo -e "\n# --- Git push simplifié ---\npush() {\n  if [ -z \"\$1\" ]; then\n    echo \"❌ Erreur : tu dois entrer un message de commit.\"\n    echo \"👉 Exemple : push \\\"ajout d'un script\\\"\"\n    return 1\n  fi\n\n  git add .\n  git commit -m \"\$1\"\n  git push\n}\n# --- Fin de la fonction push ---" >> ~/.zshrc
+
+# Recharger Zsh
+source ~/.zshrc
