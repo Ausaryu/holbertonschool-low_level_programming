@@ -8,19 +8,22 @@
  */
 void print_diagsums(int *a, int size)
 {
-	int diag1, diag2;
+	long int diag1, diag2;
 	int i, y;
 
 /*diag 1*/
+	diag1 = 0;
 	for (i = 0; i < size; i++)
 	{
 		diag1 += a[i * size + i];
 	}
 /*diag2*/
-	for (y = size - 1; y >= 0; y++)
+	diag2 = 0;
+	i = 0;
+	for (y = size - 1; y >= 0 && i < size; y--)
 	{
-		for (i = 0; i < size; i++)
-			diag2 += a[i * size + y];
+		diag2 += a[i * size + y];
+		i++;
 	}
-	printf ("%d, %d\n", diag1, diag2);
+	printf ("%ld, %ld\n", diag1, diag2);
 }
