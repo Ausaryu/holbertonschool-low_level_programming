@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <unistd.h>
+void format_int(int n);
 
 /**
- * main - print his name
+ * main - print the number of argument
  * @argc: argument count
  * @argv: argument vector
  *
@@ -10,35 +11,35 @@
  */
 int main(int argc, char *argv[])
 {	
-	char args, args10, args100;
-
 	(void)argv;
-	if (argc >= 100)
-	{
-		args100 = (((argc - 1) / 100) + '0');
-		args10 = ((((argc - 1) / 10) % 10) + '0');
-		args = (((argc - 1) % 10) + '0');
-
-		write(1, &args100, 1);
-		write(1, &args10, 1);
-		write(1, &args, 1);
-	}
-	else if (argc >= 10)
-	{
-		args10 = (((argc - 1) / 10) + '0');
-		args = (((argc - 1) % 10) + '0');
-
-		write(1, &args10, 1);
-		write(1, &args, 1);
-	}
-	else
-	{
-		args = (argc - 1 + '0');
-
-		write(1, &args, 1);
-	}
+	format_int(argc - 1);
 	write(1, "\n", 1);
 
 	return (0);
 }
 
+/**
+ * format_int - print number superior to ten
+ * @argc: argument count
+ * @argv: argument vector
+ *
+ * Return: Nothing.
+ */
+void format_int(int n)
+{
+	int printed;
+
+	if (n >= 10)
+	{
+		printed = ((n % 10) + '0');
+
+		format_int(n / 10);
+		write(1, &printed, 1);
+	}
+	else
+	{
+		printed = (n + '0');
+
+		write(1, &printed, 1);
+	}
+}
