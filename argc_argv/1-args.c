@@ -10,7 +10,7 @@ void format_int(int n);
  * Return: Always 0.
  */
 int main(int argc, char *argv[])
-{	
+{
 	(void)argv;
 	format_int(argc - 1);
 	write(1, "\n", 1);
@@ -20,8 +20,7 @@ int main(int argc, char *argv[])
 
 /**
  * format_int - print number superior to ten
- * @argc: argument count
- * @argv: argument vector
+ * @n: argument count
  *
  * Return: Nothing.
  */
