@@ -19,10 +19,10 @@ int main(int argc, char *argv[])
 	{
 		add += strtol(argv[i], &endptr, 10);
 		if (*endptr != '\0')
-   		{
-        printf("Error\n");
-        return 1;
-    	}
+		{
+		printf("Error\n");
+		return (1);
+		}
 	}
 
 	printf("%ld\n", add);
