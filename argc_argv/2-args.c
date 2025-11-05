@@ -3,7 +3,7 @@
 void _puts(char *str);
 
 /**
- * main - print the number of argument
+ * main - print all the of argument
  * @argc: argument count
  * @argv: argument vector
  *
