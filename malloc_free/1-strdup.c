@@ -27,10 +27,6 @@ char *_strdup(char *str)
 	{
 		size++;
 	}
-	if (size == 0)
-	{
-		return (NULL);
-	}
 
 	array = malloc(size + 1);
 	if (array == NULL)
