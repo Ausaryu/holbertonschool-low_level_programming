@@ -17,17 +17,22 @@ char *_strdup(char *str)
 
 	i = 0;
 	size = 0;
-	while (str[i] != '\0')
+
+	if (str == NULL)
+	{
+		return (NULL);
+	}
+
+	while (str[size] != '\0')
 	{
 		size++;
-		i++;
 	}
 	if (size == 0)
 	{
 		return (NULL);
 	}
 
-	array = malloc(size);
+	array = malloc(size + 1);
 	if (array == NULL)
 	{
 		return (NULL);
@@ -37,7 +42,7 @@ char *_strdup(char *str)
 	{
 		array[i] = str[i];
 	}
-	array[i + 1] = '\0';
+	array[size] = '\0';
 
 	return (array);
 }
