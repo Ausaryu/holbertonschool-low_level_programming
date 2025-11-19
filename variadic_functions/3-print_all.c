@@ -16,8 +16,8 @@ void print_all(const char * const format, ...)
 		{"i", print_int},
 		{"f", print_float},
 		{"s", print_string},
-		{NULL, NULL}
 	};
+	char *sep = "";
 
 	va_start(ap, format);
 
@@ -29,9 +29,9 @@ void print_all(const char * const format, ...)
 		{
 			if (*(funcs[j].type) == format[i])
 			{
-				if (i != 0)
-					printf(", ");
+				printf("%s", sep);
 				funcs[j].f(ap);
+				sep = ", ";
 				break;
 			}
 			j++;
@@ -49,9 +49,7 @@ void print_all(const char * const format, ...)
  */
 void print_char(va_list ap)
 {
-	int a = va_arg(ap, int);
-
-	printf("%c", a);
+	printf("%c", va_arg(ap, int));
 }
 
 /**
@@ -60,9 +58,7 @@ void print_char(va_list ap)
  */
 void print_int(va_list ap)
 {
-	int a = va_arg(ap, int);
-
-	printf("%d", a);
+	printf("%d", va_arg(ap, int));
 }
 
 /**
@@ -71,9 +67,7 @@ void print_int(va_list ap)
  */
 void print_float(va_list ap)
 {
-	double a = va_arg(ap, double);
-
-	printf("%f", a);
+	printf("%f", va_arg(ap, double));
 }
 
 /**
@@ -87,7 +81,10 @@ void print_string(va_list ap)
 	char *a = va_arg(ap, char*);
 
 	if (a == NULL)
+	{
 		printf("(nil)");
-	else
-		printf("%s", a);
+		return;
+	}
+
+	printf("%s", a);
 }
