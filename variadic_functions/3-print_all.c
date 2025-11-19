@@ -5,21 +5,12 @@
 /**
  * print_all - Prints anything based on a format string.
  * @format: List of types of arguments passed (c, i, f, s).
- *
- * Description:
- *   c: char
- *   i: integer
- *   f: float
- *   s: char * (prints (nil) if NULL)
- *   Any other character is ignored.
- *   Prints a new line at the end.
  */
 
 void print_all(const char * const format, ...)
 {
 	va_list ap;
 	unsigned int i = 0, j;
-	char *sep = "";
 	printer_t funcs[] = {
 		{"c", print_char},
 		{"i", print_int},
@@ -38,9 +29,9 @@ void print_all(const char * const format, ...)
 		{
 			if (*(funcs[j].type) == format[i])
 			{
-				printf("%s", sep);
+				if (i != 0)
+					printf(", ");
 				funcs[j].f(ap);
-				sep = ", ";
 				break;
 			}
 			j++;
@@ -58,7 +49,7 @@ void print_all(const char * const format, ...)
  */
 void print_char(va_list ap)
 {
-	char a = (char) va_arg(ap, int);
+	int a = va_arg(ap, int);
 
 	printf("%c", a);
 }
