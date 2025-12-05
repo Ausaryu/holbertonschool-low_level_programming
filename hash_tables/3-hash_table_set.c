@@ -1,60 +1,78 @@
 #include "hash_tables.h"
 
 /**
- * hash_table_set - Adds or updates an element in a hash table
- * @ht: The hash table
- * @key: The key (cannot be an empty string)
- * @value: The value associated with the key (must be duplicated)
- *
+ * hash_table_set - Adds or updates an element in the hash table
+ * @ht: Hash table to set
+ * @key: Key to set
+ * @value: Value to set at key
  * Return: 1 on success, 0 on failure
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-    unsigned long int index;
-    hash_node_t *node, *tmp;
+	unsigned long int index;
+	hash_node_t *tmp, *new_node;
 
-    /* Check for invalid input */
-    if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
-        return (0);
+	if (!ht || !key || strlen(key) == 0 || !value)
+		return (0);
 
-    /* Get index */
-    index = key_index((const unsigned char *)key, ht->size);
-    tmp = ht->array[index];
+	index = key_index((const unsigned char *)key, ht->size);
+	tmp = ht->array[index];
 
-    /* Check if the key already exists → update the value */
-    while (tmp != NULL)
-    {
-        if (strcmp(tmp->key, key) == 0)
-        {
-            char *new_value = strdup(value);
-            if (new_value == NULL)
-                return (0);
+	/* Update value if key already exists */
+	while (tmp)
+	{
+		if (strcmp(tmp->key, key) == 0)
+		{
+			free(tmp->value);
+			tmp->value = strdup(value);
+			return (tmp->value ? 1 : 0);
+		}
+		tmp = tmp->next;
+	}
 
-            free(tmp->value);
-            tmp->value = new_value;
-            return (1);
-        }
-        tmp = tmp->next;
-    }
+	/* Key does not exist, create a new node */
+	new_node = create_node(key, value);
+	if (!new_node)
+		return (0);
 
-    /* If the key doesn't exist → create a new node */
-    node = malloc(sizeof(hash_node_t));
-    if (node == NULL)
-        return (0);
+	new_node->next = ht->array[index];
+	ht->array[index] = new_node;
 
-    node->key = strdup(key);
-    node->value = strdup(value);
-    if (node->key == NULL || node->value == NULL)
-    {
-        free(node->key);
-        free(node->value);
-        free(node);
-        return (0);
-    }
+	return (1);
+}
 
-    /* Insert at beginning of the list (to handle collisions) */
-    node->next = ht->array[index];
-    ht->array[index] = node;
+/**
+ * create_node - Creates a new key-value entry
+ * @key: Key to add
+ * @value: Value to add to key
+ * Return: Pointer to the new node, or NULL on failure
+ */
+hash_node_t *create_node(const char *key, const char *value)
+{
+	hash_node_t *new_node;
 
-    return (1);
+	if (!key || strlen(key) == 0 || !value)
+		return (NULL);
+
+	new_node = malloc(sizeof(hash_node_t));
+	if (!new_node)
+		return (NULL);
+
+	new_node->key = strdup(key);
+	if (!new_node->key)
+	{
+		free(new_node);
+		return (NULL);
+	}
+
+	new_node->value = strdup(value);
+	if (!new_node->value)
+	{
+		free(new_node->key);
+		free(new_node);
+		return (NULL);
+	}
+
+	new_node->next = NULL;
+	return (new_node);
 }
